@@ -47,23 +47,28 @@ struct MovieRow: ConnectedView {
                     .titleStyle()
                     .foregroundColor(.steam_gold)
                     .lineLimit(2)
+                    .accessibilityIdentifier("MovieTitle")
                 HStack {
                     PopularityBadge(score: Int(props.movie.vote_average * 10))
                     Text(formatter.string(from: props.movie.releaseDate ?? Date()))
                         .font(.subheadline)
                         .foregroundColor(.primary)
                         .lineLimit(1)
+                        .accessibilityIdentifier("MovieReleaseDate")
                 }
                 Text(props.movie.overview)
                     .foregroundColor(.secondary)
                     .lineLimit(3)
                     .truncationMode(.tail)
+                    .accessibilityIdentifier("MovieDescription")
             }.padding(.leading, 8)
         }
         .padding(.top, 8)
         .padding(.bottom, 8)
         .contextMenu{ MovieContextMenu(movieId: self.movieId) }
         .redacted(reason: movieId == 0 ? .placeholder : [])
+        .accessibilityElement(children: /*@START_MENU_TOKEN@*/.contain/*@END_MENU_TOKEN@*/)
+        .accessibilityIdentifier("MovieItem")
     }
 }
 

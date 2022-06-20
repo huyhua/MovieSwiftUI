@@ -119,6 +119,8 @@ struct MoviesList: ConnectedView {
         .onPreferenceChange(OffsetTopPreferenceKey.self) { _ in
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("SearchField")
     }
     
     private var searchFilterView: some View {

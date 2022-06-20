@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "05885CA1-1053-4668-838F-7D89D17B0FBE",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MovieSwift.xcodeproj",
+      "identifier" : "69FFAF7B22A99F1100801F3C",
+      "name" : "MovieSwift"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MovieSwift.xcodeproj",
+        "identifier" : "E6E9A5A028600F6000D627B4",
+        "name" : "MovieSwiftUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
