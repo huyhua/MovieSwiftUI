@@ -38,11 +38,18 @@ class MovieSwiftUITests: XCTestCase {
         XCTAssertEqual(movie.title, "Jurassic World Dominion")
     }
     
+    func testAccessDetailScreen() {
+        // UI tests must launch the application that they test.
+        let detail = home.getItem(by: "Jurassic World Dominion").goToMovieDetail()
+        
+        XCTAssertEqual(detail.duration, 146)
+    }
+    
     func testSearchSpiderManMovie() {
         home.search("Spider Man")
-            
-        
         XCTAssertGreaterThan(home.items.count, 0)
-        XCTAssert(home.getItem(by: 0).description.contains("Spider-Man"))
+        
+        let movie = home.getItem(by: "Not existing movie")
+        XCTAssertEqual(movie.title, "Spider-Plant Man")
     }
 }

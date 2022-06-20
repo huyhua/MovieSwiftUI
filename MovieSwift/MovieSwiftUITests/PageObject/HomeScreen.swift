@@ -26,6 +26,14 @@ struct HomeScreen: Screen {
     }
     
     func getItem(by title: String) -> MovieItem {
+        var retry = 0
+        let movieItem = items.containing(NSPredicate(format: "label == '\(title)'")).firstMatch
+        
+        while !movieItem.exists && retry < 10 {
+            app.swipeUp(velocity: .fast)
+            retry+=1
+        }
+        
         return MovieItem(items.containing(NSPredicate(format: "label == '\(title)'")).firstMatch)
     }
     
@@ -47,6 +55,7 @@ struct HomeScreen: Screen {
 }
 
 struct MovieItem {
+    let app = XCUIApplication()
     let wrapper: XCUIElement
     var title: String {
         wrapper.staticTexts["MovieTitle"].firstMatch.label
@@ -59,7 +68,9 @@ struct MovieItem {
         self.wrapper = wrapper
     }
     
-    func goToMovieDetail() {
+    func goToMovieDetail() -> DetailScreen {
         wrapper.tap()
+        
+        return DetailScreen(app: app)
     }
 }

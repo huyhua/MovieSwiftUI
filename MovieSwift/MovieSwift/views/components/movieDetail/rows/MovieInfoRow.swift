@@ -24,18 +24,21 @@ struct MovieInfoRow : View {
         HStack {
             if let date = movie.release_date {
                 Text(date.prefix(4)).font(.subheadline)
+                    .accessibilityIdentifier("ReleaseDate")
             }
             if let runtime = movie.runtime {
                 Text("• \(runtime) minutes")
                     .font(.subheadline)
                     .animation(asyncTextAnimation)
                     .transition(asyncTextTransition)
+                    .accessibilityIdentifier("Runtime")
             }
             if let status = movie.status {
                 Text("• \(status)")
                     .font(.subheadline)
                     .animation(asyncTextAnimation)
                     .transition(asyncTextTransition)
+                    .accessibilityIdentifier("Release Status")
             }
         }
         .foregroundColor(.white)
